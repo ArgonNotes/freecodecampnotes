@@ -8,11 +8,11 @@ toc_footers:
   - <a href='https://github.com/tripit/slate' target="_blank">Notes Powered by Slate</a>
 
 includes:
-  - basic-javascript
-  - function-and-scope
-  - logic
-  - objects
-  - iterations
-  - numbers
+  - bjs-basic-javascript
+  - bjs-function-and-scope
+  - bjs-logic
+  - bjs-objects
+  - bjs-iterations
+  - bjs-numbers
 search: true
 ---
