@@ -116,236 +116,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
-
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
-
-<h1 id="authentication">Authentication</h1>
-
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-</code></pre>
-
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-<h1 id="kittens">Kittens</h1>
-
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves all kittens.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-
-<h1 id="errors">Errors</h1>
-
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
-</tr>
-</tbody></table>
-
+        
           <h1 id="basic-javascript">Basic JavaScript</h1>
 
 <h2 id="comments">Comments</h2>
@@ -624,6 +395,515 @@ Remember — a happy kitten is an authenticated kitten!
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat">Array/concat</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop">Array/pop</a></li>
 </ul>
+
+<h3 id="accessing-nested-arrays">Accessing Nested Arrays</h3>
+<pre class="highlight plaintext"><code>var ourPets = [
+  {
+    animalType: "cat",
+    names: [
+      "Meowzer",
+      "Fluffy",
+      "Kit-Cat"
+    ]
+  },
+  {
+    animalType: "dog",
+    names: [
+      "Spot",
+      "Bowser",
+      "Frankie"
+    ]
+  }
+];
+ourPets[0].names[1]; // "Fluffy"
+ourPets[1].names[0]; // "Spot"
+</code></pre>
+
+          <h2 id="functions">Functions</h2>
+
+<h3 id="function-declaration">Function declaration</h3>
+
+<blockquote>
+<p>Function declaration</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kd">function</span> <span class="nx">functionName</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Hello World"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+
+<h3 id="function-invoked">Function invoked</h3>
+
+<blockquote>
+<p>Function invoked</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="nx">functionName</span><span class="p">();</span>
+</code></pre>
+
+<h3 id="passing-values-to-functions-with-arguments">Passing Values to Functions with Arguments</h3>
+
+<blockquote>
+<p>Passing Values to Functions with Arguments</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kd">function</span> <span class="nx">testFun</span><span class="p">(</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">param2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">param2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">testFun</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="s2">"World"</span><span class="p">);</span>
+</code></pre>
+
+<p><strong>Parameters</strong> are variables that act as placeholders for the values that are to be input to a function when it is called.</p>
+
+<p>When a function is defined, it is typically defined along with one or more parameters. The actual values that are input (or &ldquo;passed&rdquo;) into a function when it is called are known as <strong>arguments</strong>.</p>
+
+<h2 id="scope">Scope</h2>
+
+<blockquote>
+<p>Scope</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kd">function</span> <span class="nx">myTest</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">loc</span> <span class="o">=</span> <span class="s2">"foo"</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">loc</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">myTest</span><span class="p">();</span> <span class="c1">// "foo"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">loc</span><span class="p">);</span> <span class="c1">// "undefined"</span>
+</code></pre>
+
+<h3 id="global-scope">Global Scope</h3>
+
+<p>In JavaScript, scope refers to the <strong>visibility of variables</strong>. Variables which are defined outside of a function block have <strong>Global scope</strong>. This means, they can be seen <strong>everywhere</strong> in your JavaScript code.</p>
+
+<h3 id="local-scope">Local Scope</h3>
+
+<p>Variables which are declared within a function, as well as the function parameters have local scope. That means, they are only visible within that function.</p>
+
+<p><strong>Declaring a variable inside a function without <code class="prettyprint">var</code> will create it in a Global scope !!!</strong></p>
+
+<p>It is possible to have both local and global variables with the same name. When you do this, the local variable takes precedence over the global variable. BUT DO NOT!!!</p>
+
+<h3 id="return-a-value-from-a-function-with-return-and-assign-to-a-variable">Return a Value from a Function with Return, and assign to a variable</h3>
+
+<p>We can pass values into a function with arguments. You can use a return statement to send a value back out of a function.</p>
+
+<blockquote>
+<p>Return a Value from a Function</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kd">function</span> <span class="nx">plusThree</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">num</span> <span class="o">+</span> <span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">answer</span> <span class="o">=</span> <span class="nx">plusThree</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// 8</span>
+</code></pre>
+
+          <h2 id="queue">Queue</h2>
+
+<p>In Computer Science a queue is an abstract Data Structure where items are kept in order. New items can be added at the back of the queue and old items are taken off from the front of the queue.</p>
+
+<h2 id="boolean-values">Boolean values</h2>
+<pre class="highlight javascript"><code><span class="kc">true</span>
+<span class="kc">false</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="kd">function</span> <span class="nx">isEqual</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
+<h2 id="conditional-logic-with-if-statements">Conditional Logic with If Statements</h2>
+<pre class="highlight javascript"><code><span class="k">if</span> <span class="p">(</span><span class="nx">condition</span> <span class="nx">is</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">statement</span> <span class="nx">is</span> <span class="nx">executed</span>
+<span class="p">}</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="kd">function</span> <span class="nx">test</span> <span class="p">(</span><span class="nx">myCondition</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">myCondition</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">return</span> <span class="s2">"It was true"</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="s2">"It was false"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">test</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>  <span class="c1">// returns "It was true"</span>
+<span class="nx">test</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span> <span class="c1">// returns "It was false"</span>
+</code></pre>
+
+<h2 id="early-pattern">Early Pattern</h2>
+<pre class="highlight javascript"><code><span class="kd">function</span> <span class="nx">myFun</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">);</span>
+  <span class="k">return</span> <span class="s2">"World"</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"byebye"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">myFun</span><span class="p">();</span>
+</code></pre>
+
+<p>The above outputs &ldquo;Hello&rdquo; to the console, returns &ldquo;World&rdquo;, but &ldquo;byebye&rdquo; is never output, because the function exits at the return statement.</p>
+
+<h2 id="comparison-operators">Comparison Operators</h2>
+
+<ul>
+<li>equality operator <code class="prettyprint">==</code></li>
+<li>strict equality operator <code class="prettyprint">===</code></li>
+<li>Inequality Operator <code class="prettyprint">!=</code></li>
+<li>Strict Inequality Operator <code class="prettyprint">!==</code></li>
+<li>Greater Than Operator <code class="prettyprint">&gt;</code></li>
+<li>Greater Than Or Equal To Operator <code class="prettyprint">&gt;=</code></li>
+<li> Less Than Operator <code class="prettyprint">&lt;</code></li>
+<li>Less Than Or Equal To Operator <code class="prettyprint">&lt;=</code></li>
+<li>Logical And Operator <code class="prettyprint">&amp;&amp;</code></li>
+<li>Logical Or Operator <code class="prettyprint">||</code></li>
+</ul>
+<pre class="highlight javascript"><code><span class="mi">1</span>   <span class="o">==</span>  <span class="mi">1</span>    <span class="c1">// true</span>
+<span class="mi">1</span>   <span class="o">==</span>  <span class="mi">2</span>    <span class="c1">// false</span>
+<span class="mi">1</span>   <span class="o">==</span> <span class="s1">'1'</span>   <span class="c1">// true</span>
+<span class="s2">"3"</span>  <span class="o">==</span>  <span class="mi">3</span>    <span class="c1">// true</span>
+
+<span class="mi">3</span> <span class="o">===</span> <span class="mi">3</span>   <span class="c1">// true</span>
+<span class="mi">3</span> <span class="o">===</span> <span class="s1">'3'</span> <span class="c1">// false</span>
+
+<span class="mi">1</span> <span class="o">!=</span> <span class="mi">2</span>      <span class="c1">// true</span>
+<span class="mi">1</span> <span class="o">!=</span> <span class="s2">"1"</span>    <span class="c1">// false</span>
+<span class="mi">1</span> <span class="o">!=</span> <span class="s1">'1'</span>    <span class="c1">// false</span>
+<span class="mi">1</span> <span class="o">!=</span> <span class="kc">true</span>   <span class="c1">// false</span>
+<span class="mi">0</span> <span class="o">!=</span> <span class="kc">false</span>  <span class="c1">// false</span>
+
+<span class="mi">3</span> <span class="o">!==</span> <span class="mi">3</span>   <span class="c1">// false</span>
+<span class="mi">3</span> <span class="o">!==</span> <span class="s1">'3'</span> <span class="c1">// true</span>
+<span class="mi">4</span> <span class="o">!==</span> <span class="mi">3</span>   <span class="c1">// true</span>
+
+ <span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">3</span>   <span class="c1">// true</span>
+ <span class="mi">7</span> <span class="o">&gt;</span> <span class="s1">'3'</span> <span class="c1">// true</span>
+ <span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">3</span>   <span class="c1">// false</span>
+<span class="s1">'1'</span> <span class="o">&gt;</span> <span class="mi">9</span>  <span class="c1">// false</span>
+
+ <span class="mi">6</span>  <span class="o">&gt;=</span>  <span class="mi">6</span>  <span class="c1">// true</span>
+ <span class="mi">7</span>  <span class="o">&gt;=</span> <span class="s1">'3'</span> <span class="c1">// true</span>
+ <span class="mi">2</span>  <span class="o">&gt;=</span>  <span class="mi">3</span>  <span class="c1">// false</span>
+<span class="s1">'7'</span> <span class="o">&gt;=</span>  <span class="mi">9</span>  <span class="c1">// false</span>
+
+  <span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">5</span>  <span class="c1">// true</span>
+<span class="s1">'3'</span> <span class="o">&lt;</span> <span class="mi">7</span>  <span class="c1">// true</span>
+  <span class="mi">5</span> <span class="o">&lt;</span> <span class="mi">5</span>  <span class="c1">// false</span>
+  <span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">2</span>  <span class="c1">// false</span>
+<span class="s1">'8'</span> <span class="o">&lt;</span> <span class="mi">4</span>  <span class="c1">// false</span>
+
+  <span class="mi">4</span> <span class="o">&lt;=</span> <span class="mi">5</span>  <span class="c1">// true</span>
+<span class="s1">'7'</span> <span class="o">&lt;=</span> <span class="mi">7</span>  <span class="c1">// true</span>
+  <span class="mi">5</span> <span class="o">&lt;=</span> <span class="mi">5</span>  <span class="c1">// true</span>
+  <span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">2</span>  <span class="c1">// false</span>
+<span class="s1">'8'</span> <span class="o">&lt;=</span> <span class="mi">4</span>  <span class="c1">// false</span>
+
+<span class="o">++++++++++++++++++++++++++++</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">&amp;&amp;</span> <span class="nx">num</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">"Yes"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="s2">"No"</span><span class="p">;</span>
+<span class="o">++++++++++++++++++++++++++++</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="o">||</span> <span class="nx">num</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">"No"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="s2">"Yes"</span><span class="p">;</span>
+
+</code></pre>
+
+<h2 id="else-if-and-else-statements">Else if and Else Statements</h2>
+<pre class="highlight javascript"><code><span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">"Bigger than 15"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">"Smaller than 5"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">"Between 5 and 15"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
+<h2 id="switch-statements">Switch Statements</h2>
+
+<p>If you have many options to choose from, use a switch statement. A switch statement tests a value and can have many case statements which defines various possible values. Statements are executed from the first matched case value until a break is encountered. Case values are tested with strict equality.</p>
+<pre class="highlight javascript"><code><span class="k">switch</span> <span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="mi">1</span><span class="err">:</span>
+  <span class="k">case</span> <span class="mi">7</span><span class="err">:</span> <span class="p">(</span><span class="nx">can</span> <span class="nx">be</span> <span class="nx">two</span> <span class="nx">like</span> <span class="k">this</span> <span class="nx">as</span> <span class="nx">well</span><span class="p">)</span>
+    <span class="nx">answer</span> <span class="o">=</span> <span class="s2">"apple"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="mi">2</span><span class="err">:</span>
+    <span class="nx">answer</span> <span class="o">=</span> <span class="s2">"bird"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="mi">3</span><span class="err">:</span>
+    <span class="nx">answer</span> <span class="o">=</span> <span class="s2">"cat"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="nl">default</span><span class="p">:</span>
+      <span class="nx">answer</span> <span class="o">=</span> <span class="s2">"stuff"</span><span class="p">;</span>  
+<span class="p">}</span>
+</code></pre>
+
+          <h2 id="javascript-objects">JavaScript Objects</h2>
+
+<p>Objects are similar to arrays, except that instead of using indexes to access and modify their data, you access the data in objects through what are called <strong>properties</strong>.</p>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">cat</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Whiskers"</span><span class="p">,</span>
+  <span class="s2">"legs"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="s2">"tails"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">"enemies"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Water"</span><span class="p">,</span> <span class="s2">"Dogs"</span><span class="p">]</span>
+<span class="p">};</span>
+</code></pre>
+
+<h3 id="accessing-objects-properties">Accessing Objects Properties</h3>
+
+<ol>
+<li>Dot Operator</li>
+<li>Bracket Notation - If the property of the object you are trying to access has a space in it, you will need to use bracket notation</li>
+<li>Variables</li>
+</ol>
+
+<blockquote>
+<p>.DOT Operator</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">myObj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">prop1</span><span class="p">:</span> <span class="s2">"val1"</span><span class="p">,</span>
+  <span class="na">prop2</span><span class="p">:</span> <span class="s2">"val2"</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">prop1val</span> <span class="o">=</span> <span class="nx">myObj</span><span class="p">.</span><span class="nx">prop1</span><span class="p">;</span> <span class="c1">// val1</span>
+<span class="kd">var</span> <span class="nx">prop2val</span> <span class="o">=</span> <span class="nx">myObj</span><span class="p">.</span><span class="nx">prop2</span><span class="p">;</span> <span class="c1">// val2</span>
+</code></pre>
+
+<blockquote>
+<p>[ ] BRACKET</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">myObj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"Space Name"</span><span class="p">:</span> <span class="s2">"Kirk"</span><span class="p">,</span>
+  <span class="s2">"More Space"</span><span class="p">:</span> <span class="s2">"Spock"</span>
+<span class="p">};</span>
+<span class="nx">myObj</span><span class="p">[</span><span class="s2">"Space Name"</span><span class="p">];</span> <span class="c1">// Kirk</span>
+<span class="nx">myObj</span><span class="p">[</span><span class="s1">'More Space'</span><span class="p">];</span> <span class="c1">// Spock</span>
+</code></pre>
+
+<blockquote>
+<p>Variables</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">someProp</span> <span class="o">=</span> <span class="s2">"propName"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">myObj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">propName</span><span class="p">:</span> <span class="s2">"Some Value"</span>
+<span class="p">}</span>
+<span class="nx">myObj</span><span class="p">[</span><span class="nx">someProp</span><span class="p">];</span> <span class="c1">// "Some Value"</span>
+</code></pre>
+
+<blockquote>
+<p>Updating properties</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">ourDog</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Camper"</span><span class="p">,</span>
+  <span class="s2">"legs"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="s2">"tails"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">"friends"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"everything!"</span><span class="p">]</span>
+<span class="p">};</span>
+
+<span class="nx">ourDog</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">"bow-wow"</span><span class="p">;</span>
+</code></pre>
+
+<blockquote>
+<p>Adding properties</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">ourDog</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Camper"</span><span class="p">,</span>
+  <span class="s2">"legs"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="s2">"tails"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">"friends"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"everything!"</span><span class="p">]</span>
+<span class="p">};</span>
+
+<span class="nx">ourDog</span><span class="p">.</span><span class="nx">bark</span> <span class="o">=</span> <span class="s2">"bow-wow"</span><span class="p">;</span>
+</code></pre>
+
+<blockquote>
+<p>Deleting properties</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="k">delete</span> <span class="nx">ourDog</span><span class="p">.</span><span class="nx">bark</span><span class="p">;</span>
+</code></pre>
+
+<h3 id="using-object-as-lookup-library-storage">Using object as lookup/library/storage</h3>
+
+<blockquote>
+<p>Using object as lookup/library/storage</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">alpha</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="mi">1</span><span class="p">:</span><span class="s2">"Z"</span><span class="p">,</span>
+  <span class="mi">2</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span>
+  <span class="mi">3</span><span class="p">:</span><span class="s2">"X"</span><span class="p">,</span>
+  <span class="mi">4</span><span class="p">:</span><span class="s2">"W"</span><span class="p">,</span>
+  <span class="p">...</span>
+  <span class="mi">24</span><span class="p">:</span><span class="s2">"C"</span><span class="p">,</span>
+  <span class="mi">25</span><span class="p">:</span><span class="s2">"B"</span><span class="p">,</span>
+  <span class="mi">26</span><span class="p">:</span><span class="s2">"A"</span>
+<span class="p">};</span>
+<span class="nx">alpha</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> <span class="c1">// "Y"</span>
+<span class="nx">alpha</span><span class="p">[</span><span class="mi">24</span><span class="p">];</span> <span class="c1">// "C"</span>
+
+<span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nx">alpha</span><span class="p">[</span><span class="nx">value</span><span class="p">];</span> <span class="c1">// "Y"</span>
+</code></pre>
+
+<h3 id="accessing-nested-objects">Accessing Nested Objects</h3>
+
+<p>The sub-properties of objects can be accessed by chaining together the dot or bracket notation.</p>
+
+<blockquote>
+<p>Accessing Nested Objects</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">ourStorage</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"desk"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"drawer"</span><span class="p">:</span> <span class="s2">"stapler"</span>
+  <span class="p">},</span>
+  <span class="s2">"cabinet"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"top drawer"</span><span class="err">:</span> <span class="p">{</span>
+      <span class="s2">"folder1"</span><span class="err">:</span> <span class="s2">"a file"</span><span class="p">,</span>
+      <span class="s2">"folder2"</span><span class="err">:</span> <span class="s2">"secrets"</span>
+    <span class="p">},</span>
+    <span class="s2">"bottom drawer"</span><span class="err">:</span> <span class="s2">"soda"</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">ourStorage</span><span class="p">.</span><span class="nx">cabinet</span><span class="p">[</span><span class="s2">"top drawer"</span><span class="p">].</span><span class="nx">folder2</span><span class="p">;</span>  <span class="c1">// "secrets"</span>
+<span class="nx">ourStorage</span><span class="p">.</span><span class="nx">desk</span><span class="p">.</span><span class="nx">drawer</span><span class="p">;</span> <span class="c1">// "stapler"</span>
+</code></pre>
+
+<h3 id="object-methods">Object methods</h3>
+
+<p><code class="prettyprint">.hasOwnProperty(propname) // returns true or false</code></p>
+
+<h2 id="json">JSON</h2>
+
+<h3 id="complex-data-structure-json-javascript-objectnotation">Complex data structure JSON = JavaScript ObjectNotation</h3>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">ourMusic</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">"artist"</span><span class="p">:</span> <span class="s2">"Daft Punk"</span><span class="p">,</span>
+    <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Homework"</span><span class="p">,</span>
+    <span class="s2">"release_year"</span><span class="p">:</span> <span class="mi">1997</span><span class="p">,</span>
+    <span class="s2">"formats"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">"CD"</span><span class="p">,</span>
+      <span class="s2">"Cassette"</span><span class="p">,</span>
+      <span class="s2">"LP"</span> <span class="p">],</span>
+    <span class="s2">"gold"</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">];</span>
+</code></pre>
+
+<p>Objects hold data in a property, which has a key-value format. In the example above, &ldquo;artist&rdquo;: &ldquo;Daft Punk&rdquo; is a property that has a key of &ldquo;artist&rdquo; and a value of &ldquo;Daft Punk&rdquo;.</p>
+
+          <h2 id="iterations-with-javascript-for-loops">Iterations with JavaScript <em>For Loops</em></h2>
+<pre class="highlight javascript"><code><span class="k">for</span> <span class="p">([</span><span class="nx">initialization</span><span class="p">];</span> <span class="p">[</span><span class="nx">condition</span><span class="p">];</span> <span class="p">[</span><span class="kr">final</span><span class="o">-</span><span class="nx">expression</span><span class="p">])</span>
+</code></pre>
+
+<ol>
+<li>initialization is evaluated on condition start</li>
+<li>condition is evaluated at the start of every loop and make it run as long as it is true</li>
+<li>final condition is checked at the end of the loop, usually to change the value that will change the loop, e.g. i++
+&ldquo;`javascript
+var ourArray = [];
+for (var i = 0; i &lt; 5; i++) {
+ourArray.push(i);
+}</li>
+</ol>
+
+<p>// ourArray will now contain [0,1,2,3,4]</p>
+
+<p>final-expression:
+i++
+i += 2
+i&ndash;
+i -=3
+etc&hellip;
+&rdquo;`</p>
+
+<h3 id="loop-backwards">Loop backwards</h3>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">ourArray</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">-=</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">ourArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+
+<h3 id="loop-over-an-array">Loop over an array</h3>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">ourArr</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">ourTotal</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">ourArr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">ourTotal</span> <span class="o">+=</span> <span class="nx">ourArr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre>
+
+<h3 id="nesting-for-loops">Nesting for loops</h3>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="p">];</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">length</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<h2 id="while-loops">While Loops</h2>
+
+<p>Another type of JavaScript loop is called a &ldquo;while loop&rdquo;, because it runs &ldquo;while&rdquo; a specified condition is true and stops once that condition is no longer true.</p>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">ourArray</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">ourArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+  <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
+          <h2 id="number-generation">Number generation</h2>
+
+<h3 id="fraction-from-0-to-1-exclusive">Fraction, from 0 to 1, exclusive.</h3>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">number</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">();</span>
+</code></pre>
+
+<h3 id="random-whole-numbers">Random Whole Numbers</h3>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span><span class="p">);</span>
+</code></pre>
+
+<ol>
+<li>Use Math.random() to generate a random decimal.</li>
+<li>Multiply that random decimal by 10.</li>
+<li>Use another function, Math.floor() to round the number down to its nearest whole number</li>
+<li>It gives from 0 to 9 inclusive</li>
+</ol>
+
+<h3 id="generate-numbers-within-a-range-min-to-max-inclusive">Generate numbers within a Range (min to max inclusive)</h3>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">number</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nx">max</span> <span class="o">-</span> <span class="nx">min</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="nx">min</span>
+</code></pre>
+
+<h2 id="regular-expressions">Regular expressions</h2>
+
+<p>Regular expressions are used to find certain words or patterns inside of strings. For example, if we wanted to find the word the in the string The dog chased the cat, we could use the following regular expression: /the/gi</p>
+
+<p>Let&rsquo;s break this down a bit:</p>
+
+<ol>
+<li><code class="prettyprint">/</code> is the start of the regular expression.</li>
+<li><code class="prettyprint">the</code> is the pattern we want to match.</li>
+<li><code class="prettyprint">/</code> is the end of the regular expression.</li>
+<li><code class="prettyprint">g</code> means global, which causes the pattern to return all matches in the string, not just the first one.</li>
+<li><code class="prettyprint">i</code> means that we want to ignore the case (uppercase or lowercase) when searching for the pattern.</li>
+<li> <code class="prettyprint">\s</code> to find whitespace in a string.</li>
+<li> <code class="prettyprint">\d</code> to find digits</li>
+<li> You can invert any match by using the uppercase version of the regular expression selector. For example, <code class="prettyprint">\s</code> will match any whitespace, and <code class="prettyprint">\S</code> will match anything that isn&rsquo;t whitespace.</li>
+</ol>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">testString</span> <span class="o">=</span> <span class="s2">"There are 3 cats but 4 dogs."</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">expression</span> <span class="o">=</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">+/g</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">digitCount</span> <span class="o">=</span> <span class="nx">testString</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">expression</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+<span class="c1">// 2</span>
+<span class="kd">var</span> <span class="nx">digitCount</span> <span class="o">=</span> <span class="nx">testString</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">expression</span><span class="p">).;</span>
+<span class="c1">// ["3","4"]</span>
+</code></pre>
+
+<h3 id="whitespace-characters">Whitespace characters</h3>
+<pre class="highlight javascript"><code><span class="s2">" "</span> <span class="p">(</span><span class="nx">space</span><span class="p">)</span>
+<span class="err">\</span><span class="nx">r</span> <span class="p">(</span><span class="nx">the</span> <span class="nx">carriage</span> <span class="k">return</span><span class="p">)</span>
+<span class="err">\</span><span class="nx">n</span> <span class="p">(</span><span class="nx">newline</span><span class="p">)</span>
+<span class="err">\</span><span class="nx">t</span> <span class="p">(</span><span class="nx">tab</span><span class="p">)</span>
+<span class="err">\</span><span class="nx">f</span> <span class="p">(</span><span class="nx">the</span> <span class="nx">form</span> <span class="nx">feed</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">spaceCount</span> <span class="o">=</span> <span class="nx">testString</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">expression</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+<span class="c1">// 6</span>
+</code></pre>
+
+<p>FIND MORE INFO ABOUT</p>
+
+<ol>
+<li>If you do a mathematical operation on an undefined variable your result will be NaN which means &ldquo;Not a Number&rdquo;. If you concatenate a string with an undefined variable, you will get a literal string of &ldquo;undefined&rdquo;.
+4</li>
+</ol>
 
       </div>
       <div class="dark-box">
