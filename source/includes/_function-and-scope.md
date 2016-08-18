@@ -3,7 +3,7 @@
 ### Function declaration
 >Function declaration
 
-```
+```javascript
 function functionName() {
   console.log("Hello World");
 }
@@ -12,14 +12,14 @@ function functionName() {
 ### Function invoked
 >Function invoked
 
-```
+```javascript
 functionName();
 ```
 
 ### Passing Values to Functions with Arguments
 >Passing Values to Functions with Arguments
 
-```
+```javascript
 function testFun(param1, param2) {
   console.log(param1, param2);
 }
@@ -33,7 +33,7 @@ When a function is defined, it is typically defined along with one or more param
 ## Scope
 > Scope
 
-```
+```javascript
 function myTest() {
   var loc = "foo";
   console.log(loc);
@@ -57,121 +57,9 @@ We can pass values into a function with arguments. You can use a return statemen
 
 > Return a Value from a Function
 
-```
+```javascript
 function plusThree(num) {
   return num + 3;
 }
 var answer = plusThree(5); // 8
-```
-
-## Queue
-In Computer Science a queue is an abstract Data Structure where items are kept in order. New items can be added at the back of the queue and old items are taken off from the front of the queue.
-
-## Boolean values
-```
-true
-false
-```
-
-```
-function isEqual(a,b) {
-  return a === b;
-}
-```
-
-
-## Conditional Logic with If Statements
-```
-if (condition is true) {
-  statement is executed
-}
-```
-
-```
-function test (myCondition) {
-  if (myCondition) {
-     return "It was true";
-  }
-  return "It was false";
-}
-test(true);  // returns "It was true"
-test(false); // returns "It was false"
-```
-## Early Pattern
-```
-function myFun() {
-  console.log("Hello");
-  return "World";
-  console.log("byebye")
-}
-myFun();
-```
-The above outputs "Hello" to the console, returns "World", but "byebye" is never output, because the function exits at the return statement.
-
-## Comparison Operators
-
-* equality operator `==`
-* strict equality operator `===`
-* Inequality Operator `!=`
-* Strict Inequality Operator `!==`
-* Greater Than Operator `>`
-* Greater Than Or Equal To Operator `>=`
-*  Less Than Operator `<`
-* Less Than Or Equal To Operator `<=`
-* Logical And Operator `&&`
-* Logical Or Operator `||`
-
-
-```
-1   ==  1    // true
-1   ==  2    // false
-1   == '1'   // true
-"3"  ==  3    // true
-
-3 === 3   // true
-3 === '3' // false
-
-1 != 2      // true
-1 != "1"    // false
-1 != '1'    // false
-1 != true   // false
-0 != false  // false
-
-3 !== 3   // false
-3 !== '3' // true
-4 !== 3   // true
-
- 5 > 3   // true
- 7 > '3' // true
- 2 > 3   // false
-'1' > 9  // false
-
- 6  >=  6  // true
- 7  >= '3' // true
- 2  >=  3  // false
-'7' >=  9  // false
-
-  2 < 5  // true
-'3' < 7  // true
-  5 < 5  // false
-  3 < 2  // false
-'8' < 4  // false
-
-  4 <= 5  // true
-'7' <= 7  // true
-  5 <= 5  // true
-  3 <= 2  // false
-'8' <= 4  // false
-
-++++++++++++++++++++++++++++
-if (num > 5 && num < 10) {
-  return "Yes";
-}
-return "No";
-++++++++++++++++++++++++++++
-if (num > 10 || num < 5) {
-  return "No";
-}
-return "Yes";
-
 ```

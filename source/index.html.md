@@ -10,7 +10,10 @@ toc_footers:
 includes:
   - basic-javascript
   - function-and-scope
-
+  - logic
+  - objects
+  - iterations
+  - numbers
 search: true
 ---
 
