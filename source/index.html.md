@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
   - basic-javascript
+  - function-and-scope
 
 search: true
 ---
