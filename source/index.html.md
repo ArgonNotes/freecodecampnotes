@@ -14,5 +14,6 @@ includes:
   - bjs-objects
   - bjs-iterations
   - bjs-numbers
+  - jq-basics
 search: true
 ---
