@@ -924,6 +924,220 @@ etc&hellip;
 4</li>
 </ol>
 
+          <h1 id="jquery">jQuery</h1>
+
+<h2 id="document-ready">$(document).ready()</h2>
+
+<p>Add a script element at the top of your page. Your browser will run any JavaScript inside a script element, including jQuery.</p>
+
+<p>Inside your script element, add this code:
+<code class="prettyprint">$(document).ready(function() {</code> to your script. Then close it on the following line (still inside your script element) with: <code class="prettyprint">});</code>. The important thing to know is that code you put inside this function will run as soon as your browser has loaded your page. This is important because without your document ready function, your code may run before your HTML is rendered, which would cause bugs.</p>
+<pre class="highlight javascript"><code><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="p">});</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre>
+
+<blockquote>
+<p>The HTML the code is working with</p>
+</blockquote>
+<pre class="highlight plaintext"><code>&lt;div class="container-fluid"&gt;
+  &lt;h3 class="text-primary text-center"&gt;jQuery Playground&lt;/h3&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-xs-6"&gt;
+      &lt;h4&gt;#left-well&lt;/h4&gt;
+      &lt;div class="well" id="left-well"&gt;
+        &lt;button class="btn btn-default target" id="target1"&gt;#target1&lt;/button&gt;
+        &lt;button class="btn btn-default target" id="target2"&gt;#target2&lt;/button&gt;
+        &lt;button class="btn btn-default target" id="target3"&gt;#target3&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs-6"&gt;
+      &lt;h4&gt;#right-well&lt;/h4&gt;
+      &lt;div class="well" id="right-well"&gt;
+        &lt;button class="btn btn-default target" id="target4"&gt;#target4&lt;/button&gt;
+        &lt;button class="btn btn-default target" id="target5"&gt;#target5&lt;/button&gt;
+        &lt;button class="btn btn-default target" id="target6"&gt;#target6&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h2 id="target-elements">Target elements</h2>
+
+<h3 id="by-selectors">by Selectors</h3>
+
+<ul>
+<li>All jQuery functions start with a <code class="prettyprint">$</code>, usually referred to as a <code class="prettyprint">dollar sign operator</code>, or as <code class="prettyprint">bling</code>.</li>
+<li>jQuery often selects an HTML element with a <code class="prettyprint">selector</code>, then does something to that element.</li>
+<li>For example, let&rsquo;s make all of your button elements bounce. Just add this code inside your document ready function:</li>
+</ul>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">"button"</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">"animated bounce"</span><span class="p">);</span>
+</code></pre>
+
+<p>Need:</p>
+
+<ul>
+<li>jQuery library</li>
+<li>Animate.css library - for the animated bounce class</li>
+</ul>
+
+<h3 id="by-class">by Class</h3>
+
+<ul>
+<li>let&rsquo;s target your div elements with the class well by using the <code class="prettyprint">$(&quot;.well&quot;)</code> selector.</li>
+<li>just like with CSS declarations, you type a <code class="prettyprint">.</code> before the class&rsquo;s name.</li>
+<li>use jQuery&rsquo;s <code class="prettyprint">.addClass()</code> function to add the classes <code class="prettyprint">animated</code> and <code class="prettyprint">shake</code>.</li>
+</ul>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">".text-primary"</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">"animated shake"</span><span class="p">);</span>
+</code></pre>
+
+<p>For example, you could make all the elements with the class text-primary shake by adding the following to your document ready function:</p>
+
+<h3 id="by-id">by ID</h3>
+
+<ul>
+<li>target elements by their id attributes.</li>
+<li>First target your button element with the id target3 by using the <code class="prettyprint">$(&quot;#target3&quot;)</code> selector.</li>
+<li>just like with CSS declarations, you type a <code class="prettyprint">#</code> before the id&rsquo;s name.</li>
+<li>use jQuery&rsquo;s <code class="prettyprint">.addClass()</code> function to add the classes <code class="prettyprint">animated</code> and <code class="prettyprint">fadeOut</code>.</li>
+</ul>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">"#target6"</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">"animated fadeOut"</span><span class="p">).</span>
+</code></pre>
+
+<p>Here&rsquo;s how you&rsquo;d make the button element with the id target6 fade out.</p>
+
+<h3 id="target-parent-element">Target parent element</h3>
+
+<p>Every HTML element has a parent element from which it inherits properties.</p>
+
+<p>For example, your jQuery Playground <code class="prettyprint">h3</code> element has the parent element of <code class="prettyprint">&lt;div class=&quot;container-fluid&quot;&gt;</code>, which itself has the parent body.</p>
+
+<p>jQuery has a function called <code class="prettyprint">.parent()</code> that allows you to access the parent of whichever element you&rsquo;ve selected.</p>
+
+<p>Here&rsquo;s an example of how you would use the <code class="prettyprint">.parent()</code> function if you wanted to give the parent element of the left-well element a background color of blue:</p>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">"#left-well"</span><span class="p">).</span><span class="nx">parent</span><span class="p">().</span><span class="nx">css</span><span class="p">(</span><span class="s2">"background-color"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">)</span>
+</code></pre>
+
+<h3 id="target-children-of-an-element">Target children of an element</h3>
+
+<p>Many HTML elements have children which inherit their properties from their parent HTML elements.</p>
+
+<p>For example, every HTML element is a child of your body element, and your &ldquo;jQuery Playground&rdquo; h3 element is a child of your <code class="prettyprint">&lt;div class=&quot;container-fluid&quot;&gt;</code> element.</p>
+
+<p>jQuery has a function called <code class="prettyprint">.children()</code> that allows you to access the children of whichever element you&rsquo;ve selected.</p>
+
+<p>Here&rsquo;s an example of how you would use the <code class="prettyprint">.children()</code> function to give the children of your left-well element the color of blue:</p>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">"#left-well"</span><span class="p">).</span><span class="nx">children</span><span class="p">().</span><span class="nx">css</span><span class="p">(</span><span class="s2">"color"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">)</span>
+</code></pre>
+
+<h3 id="target-specific-child">Target specific child</h3>
+
+<p>You&rsquo;ve seen why id attributes are so convenient for targeting with jQuery selectors. But you won&rsquo;t always have such neat ids to work with.</p>
+
+<p>Fortunately, jQuery has some other tricks for targeting the right elements.</p>
+
+<p>jQuery uses CSS Selectors to target elements. <code class="prettyprint">target:nth-child(n)</code> css selector allows you to select all the nth elements with the target class or element type.</p>
+
+<p>Here&rsquo;s how you would give the third element in each well the bounce class:
+<code class="prettyprint">javascript
+$(&quot;.target:nth-child(3)&quot;).addClass(&quot;animated bounce&quot;);
+</code></p>
+
+<h3 id="target-even-numbered-elements">Target even numbered elements</h3>
+
+<p>You can also target all the even-numbered elements.</p>
+
+<p>Here&rsquo;s how you would target all the odd-numbered elements with class target and give them classes:</p>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">".target:odd"</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">"animated shake"</span><span class="p">);</span>
+</code></pre>
+
+<p>Note that jQuery is zero-indexed, meaning that, counter-intuitively, :odd selects the second element, fourth element, and so on.</p>
+
+<h3 id="target-body">Target body</h3>
+
+<p>jQuery can target the body element as well</p>
+
+<p>Here&rsquo;s how we would make the entire body fade out:</p>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">"body"</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">"animated fadeOut"</span><span class="p">);</span>
+</code></pre>
+
+<h2 id="remove-classes">Remove Classes</h2>
+
+<p>In the same way you can add classes to an element with jQuery&rsquo;s <code class="prettyprint">addClass()</code> function, you can remove them with jQuery&rsquo;s <code class="prettyprint">removeClass()</code> function.</p>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">"#target2"</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">"btn-default"</span><span class="p">);</span>
+</code></pre>
+
+<h2 id="change-css">Change CSS</h2>
+
+<ul>
+<li>We can also change the CSS of an HTML element directly with jQuery.</li>
+<li>jQuery has a function called <code class="prettyprint">.css()</code> that allows you to change the CSS of an element.</li>
+</ul>
+
+<p>This is slightly different from a normal CSS declaration, because the CSS property and its value are in quotes, and separated with a comma instead of a colon. Here&rsquo;s how we would change its color to blue:</p>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">"#target1"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">"color"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">);</span>
+</code></pre>
+
+<h2 id="disable-element">Disable Element</h2>
+
+<ul>
+<li>change the non-CSS properties of HTML elements with jQuery. For example, you can disable buttons. When you disable a button, it will become grayed-out and can no longer be clicked.</li>
+<li>jQuery has a function called <code class="prettyprint">.prop()</code> that allows you to adjust the properties of elements.</li>
+</ul>
+
+<p>Here&rsquo;s how you would disable all buttons:</p>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">"button"</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s2">"disabled"</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</code></pre>
+
+<h2 id="change-text">Change Text</h2>
+
+<p>Using jQuery, you can <strong>change the text between the start and end tags of an element</strong>. You can even change <strong>HTML markup</strong>.</p>
+
+<p>jQuery has a function called <code class="prettyprint">.html()</code> that lets you add HTML tags and text within an element. <strong>Any content</strong> previously within the element will be <strong>completely replaced</strong> with the content you provide using this function.</p>
+
+<p>Here&rsquo;s how you would rewrite and emphasize the text of our heading:</p>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">"h3"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">"&lt;em&gt;jQuery Playground&lt;/em&gt;"</span><span class="p">);</span>
+</code></pre>
+
+<p>jQuery also has a similar function called <code class="prettyprint">.text()</code> that <strong>only alters text</strong> without adding tags. In other words, this function will not evaluate any HTML tags passed to it, but will instead treat it as the text you want to replace the existing content with.</p>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">"h3"</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s2">"jQuery Playground"</span><span class="p">);</span>
+</code></pre>
+
+<h2 id="remove-element">Remove Element</h2>
+
+<p>Now let&rsquo;s remove an HTML element from your page using jQuery.</p>
+
+<p>jQuery has a function called <code class="prettyprint">.remove()</code> that will remove an HTML element entirely</p>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">"#target4"</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+</code></pre>
+
+<h2 id="move-elements">Move Elements</h2>
+
+<ul>
+<li>jQuery has a function called <code class="prettyprint">appendTo()</code> that allows you to select HTML elements and append them to another element.</li>
+</ul>
+
+<p>For example, if we wanted to move target4 from our right well to our left well, we would use:</p>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">"#target4"</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="s2">"#left-well"</span><span class="p">);</span>
+</code></pre>
+
+<h2 id="clone-element">Clone Element</h2>
+
+<p>In addition to moving elements, you can also copy them from one place to another.</p>
+
+<ul>
+<li>jQuery has a function called <code class="prettyprint">clone()</code> that makes a copy of an element.</li>
+</ul>
+
+<p>For example, if we wanted to copy target2 from our left-well to our right-well, we would use:</p>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s2">"#target2"</span><span class="p">).</span><span class="nx">clone</span><span class="p">().</span><span class="nx">appendTo</span><span class="p">(</span><span class="s2">"#right-well"</span><span class="p">);</span>
+</code></pre>
+
+<p>Did you notice this involves sticking two jQuery functions together? This is called <strong>function chaining</strong> and it&rsquo;s a convenient way to get things done with jQuery.</p>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
