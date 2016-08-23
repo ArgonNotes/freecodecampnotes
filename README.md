@@ -26,4 +26,4 @@ I am doing it for two main reasons:
 
 ## Bugs
 1. Report via pull request and/or comments.
-2. Current bugs are on [github issus](https://github.com/ArgonNotes/javascript/issues) and [waffle](https://waffle.io/ArgonCode/javascript).
+2. Current bugs are on [github issus](https://github.com/ArgonNotes/javascript/issues) and [waffle](https://waffle.io/ArgonNotes/javascript).
